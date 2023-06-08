@@ -1,0 +1,16 @@
+
+<ion-card class ="container">
+    <div class="book-title">
+        <h1>{{book.title}}</h1>
+    </div>
+
+    <div class="book">
+   
+    <ion-card (click) = "character(chap.id)" class = "chapters" ngif="chapter" *ngFor = "let chap of chapter">
+        <ion-card-title> {{chap.titleChapter}} </ion-card-title>
+    </ion-card>
+
+    </div>
+
+    <button (click)="addnewchapter()">Añade un nuevo capítulo<button>
+<ion-card>

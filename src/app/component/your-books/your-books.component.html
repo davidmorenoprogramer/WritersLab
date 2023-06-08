@@ -1,0 +1,9 @@
+
+
+
+<div>
+    <ion-card *ngFor = "let book of books" (click) = "BookChapters(book.id)">
+        <ion-card-title> {{book.title}}</ion-card-title>
+        <ion-card-subtitle>description</ion-card-subtitle>
+    </ion-card>
+</div>
