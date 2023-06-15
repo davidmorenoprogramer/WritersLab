@@ -12,7 +12,7 @@ export class ChapterService {
   constructor() { 
     
     
-    this.chapters = [{id: 1, bookid:1, titleChapter: 'book1 idchapter1',text:'afashdfasiduhfasiudfh'},{id: 2, bookid:1, titleChapter: 'book1 idchapter2',text:'afashdfasiduhfasiudfh'},{id: 1, bookid:2, titleChapter: 'book2 idchapter1',text:'afashdfasiduhfasiudfh'},{id: 1, bookid:3, titleChapter: 'book3 idchapter1',text:'que asa mi gente'}]
+    this.chapters = [{id: 1, bookid:1, titleChapter: 'book1 idchapter1',text:'afashdfasiduhfasiudfh'},{id: 2, bookid:1, titleChapter: 'book1 idchapter2',text:'afashdfasiduhfasiudfh'}]
    
 
   }

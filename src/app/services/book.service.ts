@@ -7,9 +7,7 @@ import { Chapter } from '../models/book';
 export class BookService {
   books: Book[];
   constructor() { this.books = [
-    {id: 1,title:'las cronicas de narnia',sinopsis:'sadf'},
-    {id: 2,title:'libro 2',sinopsis:'sadf'},
-    {id: 3,title:'libro 3',sinopsis:'sadf'}
+    {id: 1,title:'las cronicas de narnia',sinopsis:'sadf'}
 ]}
   
   getBooks(){
