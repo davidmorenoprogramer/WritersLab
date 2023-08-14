@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
-import { ChapterListComponent } from './component/chapter-list/chapter-list.component';
+
 
 const routes: Routes = [
   {

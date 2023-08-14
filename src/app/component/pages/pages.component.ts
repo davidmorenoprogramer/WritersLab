@@ -1,31 +1,35 @@
-import { AfterContentInit, AfterViewInit, Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnDestroy, OnInit } from '@angular/core';
 import { ChapterService } from 'src/app/services/chapter.service';
-import { Route } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
 import { Chapter } from 'src/app/models/book';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-pages',
   templateUrl: './pages.component.html',
   styleUrls: ['./pages.component.scss'],
 })
-export class PagesComponent  implements OnInit,AfterViewInit {
+export class PagesComponent  implements OnInit,AfterViewInit,OnDestroy {
 
   chapter: Chapter = {} as Chapter;
   idbook: number = 0;
   idcharacter: number = 0;
-  
+  private subcription: Subscription = {} as Subscription;
 
   constructor(public chapterService: ChapterService,private route: ActivatedRoute) { }
 
   ngOnInit() {
-    this.route.params.subscribe(params => {
+   this.subcription = this.route.params.subscribe(params => {
       this.idcharacter = Number(params['idChapter'])
       this.idbook = Number(params['idBook'])
       
   });
+  }
+  ngOnDestroy(){
+    this.subcription.unsubscribe()
 
   }
+
   ngAfterViewInit(): void {
     
     this.chapter = this.chapterService.getChapterById(this.idbook,this.idcharacter);

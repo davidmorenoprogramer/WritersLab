@@ -23,4 +23,5 @@ export class YourBooksComponent  implements OnInit {
     this.router.navigate(['tuslibros',idBook] )
     
   }
+  trackByValues(index: number, value: any) { return value.id; }
 }

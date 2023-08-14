@@ -6,7 +6,7 @@
 
     <div class="book">
    
-    <ion-card (click) = "character(chap.id)" class = "chapters" ngif="chapter" *ngFor = "let chap of chapter">
+    <ion-card (click) = "character(chap.id)" class = "chapters" ngif="chapter" *ngFor = "let chap of chapter;trackBy: trackByValues">
         <ion-card-title> {{chap.titleChapter}} </ion-card-title>
     </ion-card>
 

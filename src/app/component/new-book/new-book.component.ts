@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { BookService } from 'src/app/services/book.service';
-import { Book } from 'src/app/models/book';
-import { interval } from 'rxjs';
+
 @Component({
   selector: 'app-new-book',
   templateUrl: './new-book.component.html',

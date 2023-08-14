@@ -9,7 +9,7 @@ import { ChapterListComponent } from './component/chapter-list/chapter-list.comp
 
 @NgModule({
   declarations: [AppComponent,ChapterListComponent],
-  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule,],
+  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
   bootstrap: [AppComponent],
   schemas: [

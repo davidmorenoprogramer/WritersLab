@@ -1,6 +1,5 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { IonicModule } from '@ionic/angular';
-
 import { NewBookComponent } from './new-book.component';
 
 describe('NewBookComponent', () => {
