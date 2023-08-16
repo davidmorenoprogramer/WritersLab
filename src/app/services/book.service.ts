@@ -14,14 +14,12 @@ export class BookService {
     return this.books;
   }
   addNewBook(book: Book){
+    
     this.books.push(book);
     
   }
-  addnewChapter(id:number,chapter:Chapter){
-    let chapters = this.getBookChapters(id);
-    chapters?.push(chapter);
-    this.getBookById(id).chapters = chapters;
-  }
+
+ 
 
   getBookById(id:number){
     return this.books.find(x => x.id === id) as Book;

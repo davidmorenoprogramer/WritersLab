@@ -45,12 +45,24 @@ export class ChapterListComponent  implements OnInit, OnDestroy {
   }
 
   character(idchar:Number){
+
     this.router.navigate(['tuslibros',this.book.id, idchar] )
 
   }
 
+
+  addNewIdcharacter(){
+    var id = this.chaptersService.getcharacterbookid(this.book.id) + 1
+   
+    return id
+  }
+
+
   addnewchapter(){
-      
+    let characterid = this.addNewIdcharacter()
+    this.chaptersService.addChapter({id:characterid, bookid: this.book.id, titleChapter: "nuevo capitulo", text:""})
+    this.router.navigate(['tuslibros',this.book.id, characterid])
+
 
   }
 

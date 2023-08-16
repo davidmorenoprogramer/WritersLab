@@ -1,10 +1,10 @@
-<form (submit)="addNewBook(addTitle,addSinopsis)" class = "list">
+<div class = "list">
  
   <label class = "title-book form-group">
      <input class = "title-book-input form-control" type = "text" placeholder = "Titulo del libro" #addTitle/>
      <textarea class ="form-control" placeholder = "sinopsis" #addSinopsis></textarea>
-    
+     <!--<input type="file" accept="image/*">-->
   </label>
-  <button>crear</button>
+  <button (click)="addNewBook(addTitle,addSinopsis)">crear</button>
   
-</form>
+</div>

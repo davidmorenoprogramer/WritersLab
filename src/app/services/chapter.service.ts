@@ -20,14 +20,22 @@ export class ChapterService {
     return this.chapters;
   }
 
-  addChapter(chapter: Chapter,bookid:number){
+  getcharacterbookid(id:number){
+    let characters = this.getChaptersByBook(id)
+    return characters.length
 
-    chapter.bookid = bookid 
-    let chaptersbookid = this.chapters.filter(x => x.bookid == bookid)
+  }
+
+
+  addChapter(chapter: Chapter){
+
+    //chapter.bookid = chapter.bookid 
+    //let chaptersbookid = this.chapters.filter(x => x.bookid == chapter.bookid)
+    this.chapters.push(chapter);
     
 
-    this.chapters.push(chapter);
   }
+
 
   editCharacter(idbook:number,idcharacter:number,chapter: Chapter){
     
