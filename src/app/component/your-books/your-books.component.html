@@ -1,9 +1,10 @@
 
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
 <div>
-    <ion-card *ngFor = "let book of books ; trackBy: trackByValues"   (click) = "BookChapters(book.id)">
+    <ion-card *ngFor = "let book of books ; trackBy: trackByValues"   >
+        <ion-img (click) = "BookChapters(book.id)" src="" onerror="this.onerror=null" src='https://upload.wikimedia.org/wikipedia/commons/a/ac/No_image_available.svg'></ion-img>
         <ion-card-title> {{book.title}}</ion-card-title>
-        <ion-card-subtitle>description</ion-card-subtitle>
+        <ion-icon (click)="deleteBook(book.id)" aria-hidden="true" name="trash"></ion-icon>
     </ion-card>
 </div>

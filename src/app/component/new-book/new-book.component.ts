@@ -23,7 +23,7 @@ export class NewBookComponent  implements OnInit {
   addNewBook(addTitle:HTMLInputElement,Sinopsis:HTMLTextAreaElement){
 
     
-    this.BookService.addNewBook({id: this.addNewId(), title: addTitle.value, sinopsis:Sinopsis.value})
+    this.BookService.addNewBook({id: this.addNewId(), title: addTitle.value, sinopsis:Sinopsis.value,delete:false})
     addTitle.value = ""
     Sinopsis.value = ""
     this.router.navigate(['tuslibros'] )

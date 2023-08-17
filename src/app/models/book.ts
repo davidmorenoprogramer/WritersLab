@@ -3,6 +3,7 @@ export interface Chapter{
     bookid:number;
     titleChapter: String;
     text:String;
+    delete:boolean;
 
 }
 export interface Book{
@@ -11,5 +12,5 @@ export interface Book{
     author?: String;
     sinopsis?: String;
     chapters?: Chapter[];
-
+    delete:boolean;
 }

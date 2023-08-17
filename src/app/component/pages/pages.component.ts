@@ -42,7 +42,7 @@ export class PagesComponent  implements OnInit,AfterViewInit,OnDestroy {
 
   addChapter(addTitle:HTMLInputElement,addChapterText:HTMLTextAreaElement){
 
-    this.chapterService.editCharacter(this.idbook,this.idcharacter,{id: this.idcharacter, bookid:this.idbook, titleChapter:addTitle.value, text: addChapterText.value})
+    this.chapterService.editCharacter(this.idbook,this.idcharacter,{id: this.idcharacter, bookid:this.idbook, titleChapter:addTitle.value, text: addChapterText.value,delete:false})
 
     //this.chapterService.addChapter({titleChapter:addTitle.value, text: addChapterText.value})
     return false;

@@ -7,11 +7,13 @@ import { Chapter } from '../models/book';
 export class BookService {
   books: Book[];
   constructor() { this.books = [
-    {id: 1,title:'las cronicas de narnia',sinopsis:'sadf'}
+    {id: 1,title:'las cronicas de narnia',sinopsis:'sadf',delete:false}
 ]}
   
   getBooks(){
-    return this.books;
+
+    var bookNoDelete = this.books.filter(book => book.delete == false)
+    return bookNoDelete;
   }
   addNewBook(book: Book){
     
@@ -19,7 +21,11 @@ export class BookService {
     
   }
 
- 
+  deleteBook(id:number){
+    var book = this.books.find(x => x.id === id) as Book
+    book.delete = true;
+
+  }
 
   getBookById(id:number){
     return this.books.find(x => x.id === id) as Book;

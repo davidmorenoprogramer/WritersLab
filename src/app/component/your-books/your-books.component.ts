@@ -18,10 +18,23 @@ export class YourBooksComponent  implements OnInit {
 
     this.books = this.bookservice.getBooks()
   }
+
+
+ 
+
   BookChapters(idBook:number){
    
     this.router.navigate(['tuslibros',idBook] )
     
   }
+
+
+  deleteBook(idBook:number){
+    
+    this.bookservice.deleteBook(idBook);
+    this.books = this.bookservice.getBooks()
+  }
+
+
   trackByValues(index: number, value: any) { return value.id; }
 }
