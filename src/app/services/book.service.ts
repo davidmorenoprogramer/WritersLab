@@ -14,6 +14,8 @@ export class BookService {
 
     var bookNoDelete = this.books.filter(book => book.delete == false)
     return bookNoDelete;
+
+
   }
   addNewBook(book: Book){
     

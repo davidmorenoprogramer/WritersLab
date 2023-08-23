@@ -26,7 +26,10 @@ export class NewBookComponent  implements OnInit {
     this.BookService.addNewBook({id: this.addNewId(), title: addTitle.value, sinopsis:Sinopsis.value,delete:false})
     addTitle.value = ""
     Sinopsis.value = ""
+
     this.router.navigate(['tuslibros'] )
+
+    
   }
    
   

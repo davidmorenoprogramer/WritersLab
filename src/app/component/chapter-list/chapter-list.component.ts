@@ -1,17 +1,17 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnChanges, OnDestroy, OnInit, SimpleChanges } from '@angular/core';
 import { Chapter } from 'src/app/models/book';
 import { ChapterService } from 'src/app/services/chapter.service';
-import { ActivatedRoute } from '@angular/router';
 import { BookService } from 'src/app/services/book.service';
 import { Book } from 'src/app/models/book';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router, NavigationEnd} from '@angular/router';
 import { Subscription } from 'rxjs';
-
+import { filter } from 'rxjs/operators';
 
 @Component({
   selector: 'app-chapter-list',
   templateUrl: './chapter-list.component.html',
   styleUrls: ['./chapter-list.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ChapterListComponent  implements OnInit, OnDestroy {
 
@@ -26,17 +26,38 @@ export class ChapterListComponent  implements OnInit, OnDestroy {
     
     }
 
+
+
+
   ngOnInit() {
     
-    
+
     this.subcription = this.route.params.subscribe(params => {
         this.id = Number(params['idBook'])
         
     });
     this.book = this.bookService.getBookById(this.id)
     this.chapter = this.chaptersService.getChaptersByBook(this.id);
+
+    this.router.events.pipe(
+      filter(event => event instanceof NavigationEnd)
+    ).subscribe(() => {
+      const currentRoute = this.router.routerState.snapshot.url;
+      
+      if (currentRoute.startsWith('/tuslibros')) {  
+        const chapterNumber = this.route.snapshot.paramMap.get('idBook');
+        if (chapterNumber) {
+          this.book = this.bookService.getBookById(this.id)
+          this.chapter = this.chaptersService.getChaptersByBook(this.id);}
+         }
+    });
+
+
+   
    
   }
+
+
 
   ngOnDestroy(){
     
@@ -46,6 +67,7 @@ export class ChapterListComponent  implements OnInit, OnDestroy {
 
   character(idchar:Number){
 
+    
     this.router.navigate(['tuslibros',this.book.id, idchar] )
 
   }
@@ -59,6 +81,7 @@ export class ChapterListComponent  implements OnInit, OnDestroy {
 
 
   addnewchapter(){
+    
     let characterid = this.addNewIdcharacter()
     this.chaptersService.addChapter({id:characterid, bookid: this.book.id, titleChapter: "nuevo capitulo", text:"",delete:false})
     this.router.navigate(['tuslibros',this.book.id, characterid])

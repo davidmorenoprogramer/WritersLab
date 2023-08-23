@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {BookService} from '../../services/book.service'
 import {Book} from '../../models/book' 
-import { Router } from '@angular/router';
+import { filter } from 'rxjs/operators';
+import { ActivatedRoute, Router, NavigationEnd} from '@angular/router';
 @Component({
   selector: 'app-your-books',
   templateUrl: './your-books.component.html',
@@ -10,17 +11,28 @@ import { Router } from '@angular/router';
 export class YourBooksComponent  implements OnInit {
 
   books: Book[]
-  constructor( public bookservice: BookService, private router: Router) {
+  constructor(private activatedRoute: ActivatedRoute, public bookservice: BookService, private router: Router) {
     this. books = []
+
+    // if router change, actualice books 
+    //router.events.subscribe((val) => this.books = this.bookservice.getBooks())
+
    }
 
   ngOnInit() {
 
-    this.books = this.bookservice.getBooks()
+    ////detects change on route
+    this.router.events.pipe(
+      filter(event => event instanceof NavigationEnd)
+    ).subscribe(() => {
+      const currentRoute = this.router.routerState.snapshot.url;
+     
+      if (currentRoute == '/tuslibros') { this.books = this.bookservice.getBooks()}
+    });
+
+    
   }
 
-
- 
 
   BookChapters(idBook:number){
    
